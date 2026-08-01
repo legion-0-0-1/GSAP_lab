@@ -39,7 +39,12 @@ export default function HoverSlotsText() {
           onMouseEnter={() => timelines.current[i]?.restart()}
           onMouseLeave={() => timelines.current[i]?.reverse()}
         >
-          <SlotWord ref={(el) => (wordRefs.current[i] = el)} word={word} />
+          <SlotWord
+  ref={(el) => {
+    wordRefs.current[i] = el;
+  }}
+  word={word}
+/>
         </div>
       ))}
     </div>
