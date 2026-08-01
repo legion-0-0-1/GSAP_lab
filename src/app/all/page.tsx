@@ -1,12 +1,15 @@
 import React from 'react'
-import Navigation from '@/app/Navigation'
+import Navigation from '@/components/Navigation'
+import DemoGrid from '@/components/DemoGrid';
+import { allMeta } from '@/gsap-components';
 
-const page = () => {
+const all = () => {
     return (
         <>
             <Navigation />
+            <DemoGrid entries={allMeta} />
         </>
     )
 }
 
-export default page
+export default all

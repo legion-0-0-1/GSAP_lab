@@ -1,0 +1,14 @@
+/* src/components/text/SlotWord.module.css */
+.word {
+  display: flex;
+  overflow: hidden;
+  cursor: pointer;
+  height: var(--slot-size, 60px);
+}
+.letter {
+  display: flex;
+  flex-direction: column;
+}
+.letter span {
+  scale: 0.75;
+}

@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Faculty_Glyphic, Google_Sans, Audiowide} from "next/font/google";
-import Buttons from "./all/buttons/page";
 
 const facultyGlyphic = Faculty_Glyphic({
     subsets: ["latin"],
@@ -24,6 +23,7 @@ const links: Record<string, string> = {
     "All Components": "/all",
     Cards: "/all/cards",
     Buttons: "/all/buttons",
+    "Text Animations": "/all/text-animations",
 };
 
 const Navigation = () => {

@@ -1,0 +1,14 @@
+/* src/demos/text-animations/HoverSlotsText.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
+  font-size: var(--slot-size, 40px);
+  line-height: 1;
+}
