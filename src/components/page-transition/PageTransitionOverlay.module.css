@@ -1,0 +1,81 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.overlayActive {
+  pointer-events: auto;
+}
+
+/* Solid sheet under the strips — kills visible seams when fully covered */
+.underlay {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.panelTrack {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+.panelTrackVertical {
+  flex-direction: row;
+}
+
+.panelTrackHorizontal {
+  flex-direction: column;
+}
+
+.panel {
+  position: relative;
+  flex: 1 1 0;
+  overflow: hidden;
+  /* filled via inline background from config */
+  background-color: var(--panel-color, #0c0a09);
+  will-change: transform;
+}
+
+.panelVertical {
+  transform: scaleY(0);
+  transform-origin: top center;
+  height: 100%;
+}
+
+.panelHorizontal {
+  transform: scaleX(0);
+  transform-origin: left center;
+  width: 100%;
+}
+
+.panelMedia {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+.panelMediaImage {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.panelMediaText {
+  color: rgba(245, 245, 244, 0.92);
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  text-transform: uppercase;
+}

@@ -11,14 +11,14 @@ export default function CategoryPage() {
   const entries = allMeta.filter((m) => m.category === category);
 
   return (
-    <>
+    <div className="min-h-screen bg-stone-950">
       <Navigation />
-      <main className="px-8 py-12 bg-stone-950 min-h-screen">
-        <h1 className="text-2xl text-stone-100 font-medium mb-8 capitalize">
+      <main className="px-4 sm:px-6 lg:px-8 py-8 sm:py-12 max-w-6xl mx-auto w-full">
+        <h1 className="text-xl sm:text-2xl text-stone-100 font-medium mb-6 sm:mb-8 capitalize">
           {category.replace('-', ' ')}
         </h1>
         <DemoGrid entries={entries} />
       </main>
-    </>
+    </div>
   );
 }

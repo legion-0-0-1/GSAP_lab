@@ -1,0 +1,58 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: #0c0a09;
+  overflow: hidden;
+  pointer-events: auto;
+  --hole: 0%;
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    transparent var(--hole),
+    #000 var(--hole)
+  );
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    transparent var(--hole),
+    #000 var(--hole)
+  );
+}
+
+.loader {
+  position: relative;
+  z-index: 1;
+  width: 4.5rem;
+  height: 4.5rem;
+  display: grid;
+  place-items: center;
+  will-change: transform, opacity;
+  /* Start hidden in CSS too — avoids a one-frame flash before GSAP runs */
+  opacity: 0;
+  transform: scale(0);
+}
+
+.ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(245, 245, 244, 0.95);
+  border-right-color: rgba(147, 197, 253, 0.55);
+  will-change: transform;
+}
+
+.core {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #fafaf9;
+  box-shadow: 0 0 18px rgba(191, 219, 254, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    display: none;
+  }
+}
