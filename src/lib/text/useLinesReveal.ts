@@ -16,9 +16,9 @@ interface UseLinesRevealOptions {
   scrub?: number | boolean;
   start?: string;
   end?: string;
-  /** Scoped scroll container — pass this when the demo owns its own internal
-   *  scroll area (card/detail preview) instead of relying on page scroll */
   scroller?: RefObject<HTMLElement | null>;
+  /** Skip splitting/animating entirely — used when there isn't enough room to scrub */
+  enabled?: boolean;
 }
 
 export function useLinesReveal<T extends HTMLElement = HTMLElement>(
@@ -33,10 +33,11 @@ export function useLinesReveal<T extends HTMLElement = HTMLElement>(
     start = 'top 90%',
     end = 'bottom 65%',
     scroller,
+    enabled = true,
   }: UseLinesRevealOptions = {}
 ) {
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!enabled || !containerRef.current) return;
 
     const split = new SplitType(containerRef.current, { types: 'lines,chars' });
 

@@ -5,6 +5,7 @@ import { useParams, notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { allMeta, allComponents } from '@/gsap-components';
 import { usePageTransition } from '@/components/page-transition';
+import TextAnimationStage from '@/gsap-components/text-animations/TextAnimationStage';
 
 export default function DemoSharePage() {
   const { category, slug } = useParams<{ category: string; slug: string }>();
@@ -14,6 +15,9 @@ export default function DemoSharePage() {
   if (!entry) return notFound();
 
   const Component = allComponents[entry.id];
+
+  // For text animation demos, wrap with the editable text stage
+  const isTextAnimation = category === 'text-animations';
 
   return (
     <main className="min-h-screen flex flex-col items-center justify-center gap-6 bg-stone-950 relative">
@@ -27,7 +31,17 @@ export default function DemoSharePage() {
         <h1 className="text-stone-100 text-xl font-medium">{entry.title}</h1>
         {entry.description && <p className="text-stone-500 text-sm mt-1">{entry.description}</p>}
       </div>
-      <Component />
+      {isTextAnimation ? (
+        <div className="w-full max-w-3xl px-4">
+          <TextAnimationStage 
+            Demo={Component} 
+            defaultText="Every scroll is a reveal — line by line, letter by letter, considered."
+            forceScrub={true}
+          />
+        </div>
+      ) : (
+        <Component />
+      )}
     </main>
   );
 }

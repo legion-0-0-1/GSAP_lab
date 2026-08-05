@@ -4,10 +4,12 @@ import { useState, ComponentType } from 'react';
 
 interface TextAnimationStageProps {
   /** The demo component being showcased — must accept an optional `text` prop */
-  Demo: ComponentType<{ text?: string }>;
+  Demo: ComponentType<{ text?: string; forceScrub?: boolean }>;
   /** Seeds the textarea and the initial render */
   defaultText: string;
   placeholder?: string;
+  /** Force scrub mode for the demo */
+  forceScrub?: boolean;
 }
 
 /**
@@ -21,13 +23,14 @@ export default function TextAnimationStage({
   Demo,
   defaultText,
   placeholder = 'Type your own text to preview it in this animation…',
+  forceScrub = false,
 }: TextAnimationStageProps) {
   const [text, setText] = useState(defaultText);
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex min-h-80 items-center justify-center rounded-xl border border-stone-800 bg-stone-950">
-        <Demo text={text} />
+    <div className="flex flex-col gap-8 w-full">
+      <div className="flex min-h-[400px] w-full items-center justify-center rounded-xl border border-stone-800 bg-stone-950 p-4">
+        <Demo text={text} forceScrub={forceScrub} />
       </div>
 
       <label className="flex flex-col gap-2">
